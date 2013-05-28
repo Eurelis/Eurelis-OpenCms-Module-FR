@@ -1,21 +1,21 @@
 <project name="com.eurelis.opencms.locale.fr" default="°°°° MODULE" basedir=".">
 	
-	<!-- COMMENT METTRE A JOUR LE MODULE DE TRADUCTION ? -->
+	<!-- HOW TO UPDATE THE TRANSLATION MODULE ? -->
 	<!-- 
-			Definir la bonne version : 
-				* Click droit sur le fichier ant
+			Use the correct version : 
+				* Right Click on this Ant file
 				* Run as... > External tools configurations...
-				* Dans "Arguments:", inscrire "-Dversion=8.5.1" en indiquant la version d'OpenCms desiree
-			Verifier les libelles de la version souhaitee par rapport aux sources OpenCms :
-				* Doucle click sur °°° COMPARE PACKAGE
-			Generer le module :
-				* Doucle click sur °°° MODULE
+				* Within "Arguments:", use "-Dversion=8.5.1" indicating the desired OpenCms version
+      Check the labels of the desired version according to the OpenCms cources :
+				* Double click on °°° COMPARE PACKAGE
+			Generate the module package (.zip) :
+				* Double click on °°° MODULE
 	 -->
 	 
-	<!-- Arbo projet sources -->
-	<property name="folder.sources" value="../../1 - sources OpenCms" />
-	<property name="rootfolder.project" value="C:/dev/projets/2 - modules Eurelis/com.eurelis.opencms.locale.fr" />
-	<property name="rootfolder.sources" value="C:/dev/projets/1 - sources OpenCms" />
+	<!-- Tree project sources -->
+	<property name="folder.sources" value="../../1 - OpenCms sources" />
+	<property name="rootfolder.project" value="C:/dev/projects/2 - Eurelis modules/com.eurelis.opencms.locale.fr" />
+	<property name="rootfolder.sources" value="C:/dev/projects/1 - OpenCms sources" />
 	
 	<property name="license" value="
 		               ////
@@ -74,7 +74,7 @@
 	<property name="folder.etc.distlib" value="etc/distlib" />
 	<property name="folder.bin" value="bin" />
 	<property name="folder.src" value="src" />
-	<property name="folder.traductions" value="traductions" />
+	<property name="folder.translations" value="translations" />
 	
 	
 	
@@ -92,7 +92,7 @@
 	</taskdef>
 
 
-	<target name="Create project" description="Initialiser l'arborescence du projet">
+	<target name="Create project" description="Init project tree">
 		<mkdir dir="${folder.etc}" />
 		<mkdir dir="${folder.etc.distlib}" />
 		<mkdir dir="${folder.etc.complib}" />
@@ -105,7 +105,7 @@
 		<mkdir dir="${folder.build.zip}" />
 		<mkdir dir="${folder.moduleresources}" />
 		<mkdir dir="${folder.moduleresources.messages}" />
-		<mkdir dir="${folder.traductions}" />
+		<mkdir dir="${folder.translations}" />
 	</target>
 
 
@@ -113,7 +113,7 @@
 	<!-- ................................................................ -->
 	<!--  CREATION DU MODULE -->
 	
-	<target name="° Distribute resources" description="Distribution des ressources uniquement.">
+	<target name="° Distribute resources" description="Distributing only resources">
 		<input message="Please enter OpenCms version (ex : 8.5.1):" addproperty="version" defaultvalue="${defaultopencmsversion}"/>
 		<condition property="version" value="${defaultopencmsversion}">
       <not><isset property="version" /></not>
@@ -123,11 +123,11 @@
 		<copy todir="${folder.build.dist}">
 			<fileset dir="${folder.moduleresources}" excludes="**/__properties,**/__properties/**" />
 		</copy>
-		<echo message="Ressources generales copiees" />
+		<echo message="General resources copied" />
 		<copy todir="${folder.build.dist}/system/workplace/locales/fr/messages">
-			<fileset dir="${folder.traductions}/${version}" excludes="**/__properties,**/__properties/**" />
+			<fileset dir="${folder.translations}/${version}" excludes="**/__properties,**/__properties/**" />
 		</copy>
-		<echo message="Ressources ${version} copiees" />
+		<echo message="Resources ${version} copied" />
 	</target>
 	
 	
@@ -163,23 +163,20 @@
                        authoremail="${module.authoremail}"
                        userinstalled="${module.userinstalled}"
                        dateinstalled="${module.dateinstalled}">
-                       <!--Les POINTS D'EXPORTS-->
                        <exportpoint src="/system/workplace/locales/fr/messages/" dst="WEB-INF/classes/" />
-                       <!--Les RESSOURCES DE MODULE-->
 		                   <resource uri="/system/workplace/locales/fr/messages/org/opencms/" />
 			                 <resource uri="/system/workplace/locales/fr/help/" />
-               		     <!--Les PARAMETRES-->
+               		     <!--PARAMETERS -->
                        <!--<parameter name="config.sitemap" value="/system/modules/${module.module.name}/config/sitemap.config" />
 					             <parameter name="config.containerpage" value="/system/modules/${module.module.name}/config/sitemap.config" />-->
-                       <!--Les DEPENDANCES (vis a vis d'autres modules)-->
+                       <!--DEPENDANCIES (with other modules)-->
                        <!--<dependency name="com.alkacon.opencms.weboptimization" version="1.0.0" />-->
-               		     <!--Un dernier type : le pack de fichiers traites par le module-->
                        <fileset dir="${folder.build.dist}" excludes="**/__properties,**/__properties/**" />
 		</manifest>
-		<echo message="Manifest cree" />
+		<echo message="Manifest created" />
 	</target>
 	
-	<target name="°°° Compresse zip" depends="°° Create manifest">
+	<target name="°°° Compress zip" depends="°° Create manifest">
 		<input message="Please enter OpenCms version (ex : 8.5.1):" addproperty="version" defaultvalue="${defaultopencmsversion}"/>
 		<condition property="version" value="${defaultopencmsversion}">
       <not><isset property="version" /></not>
@@ -194,7 +191,7 @@
 		<zip destfile="${folder.build.zip}/${module.name}.zip">
 			<zipfileset dir="${folder.build.dist}" excludes="**/__properties/**" />
 		</zip>
-		<echo message="Zip cree" />
+		<echo message="Zip created" />
 	</target>
 	
 	<target name="°°°° MODULE">
@@ -202,8 +199,8 @@
 		<condition property="version" value="${defaultopencmsversion}">
       <not><isset property="version" /></not>
     </condition>
- 		<echo>Version OpenCms : ${version}</echo>
- 		<antcall target="°°° Compresse zip"></antcall>
+ 		<echo>OpenCms Version : ${version}</echo>
+ 		<antcall target="°°° Compress zip"></antcall>
 	</target>
 	
 	
@@ -259,20 +256,20 @@
       <not><isset property="package" /></not>
     </condition>
     
-		<fileset id="FRtranslations" dir="${folder.traductions}/${version}${package}">
+		<fileset id="FRtranslations" dir="${folder.translations}/${version}${package}">
 			<filename name="**/*.properties"/>
 		</fileset>
 		<pathconvert targetos="unix" property="FRtranslations" refid="FRtranslations" pathsep=", ">
-			<map from="${rootfolder.project}/${folder.traductions}/${version}" to=""/>
+			<map from="${rootfolder.project}/${folder.translations}/${version}" to=""/>
 		</pathconvert>
-		<echo>Version OpenCms : ${version}</echo>
+		<echo>OpenCms Version : ${version}</echo>
 		<echo>Package : ${package}</echo>
-		<echo>Dossier relatif Translations : "${folder.traductions}/${version}${package}"</echo>
+		<echo>Translations Relative Folder : "${folder.translations}/${version}${package}"</echo>
 		<script language="javascript"> <![CDATA[
 				var FRtranslations      = project.getProperty("FRtranslations");
         var translationsFilesPaths = FRtranslations.split(', ');
        	echo = project.createTask("echo");
-       	echo.setMessage('Translations : ' + translationsFilesPaths.length + ' fichier(s) .properties');
+       	echo.setMessage('Translations : ' + translationsFilesPaths.length + ' .properties file(s)');
        	echo.perform();
        	echo = project.createTask("echo");
        	echo.setMessage(FRtranslations);
@@ -301,16 +298,16 @@
 			<map from="${rootfolder.sources}/OpenCms ${version}/src-gwt" to=""/>
 			<map from="${rootfolder.sources}/OpenCms ${version}/src" to=""/>
 		</pathconvert>
-		<fileset id="FRtranslations" dir="${folder.traductions}/${version}${package}">
+		<fileset id="FRtranslations" dir="${folder.translations}/${version}${package}">
 			<filename name="**/*.properties"/>
 		</fileset>
 		<pathconvert targetos="unix" property="FRtranslations" refid="FRtranslations" pathsep=", ">
-			<map from="${rootfolder.project}/${folder.traductions}/${version}" to=""/>
+			<map from="${rootfolder.project}/${folder.translations}/${version}" to=""/>
 		</pathconvert>
 		<echo>Version OpenCms : ${version}</echo>
 		<echo>Package : ${package}</echo>
 		<echo>Dossiers relatifs Sources : ${folder.sources}/OpenCms ${version}/src${package}, ${folder.sources}/OpenCms ${version}/src-gwt${package}, ${folder.sources}/OpenCms ${version}/src-modules${package}</echo>
-		<echo>Dossier relatif Translations : "${folder.traductions}/${version}"</echo>
+		<echo>Dossier relatif Translations : "${folder.translations}/${version}"</echo>
 		
 		<script language="javascript"> <![CDATA[
 				var ENsources      = project.getProperty("ENsources");
@@ -349,7 +346,7 @@
         	}
         	if(countInexistantFilesPathInSources!=0){
 	        	echo = project.createTask("echo");
-	        	echo.setMessage('Fichier(s) de traduction n\'existant pas dans les sources : ' + countInexistantFilesPathInSources);
+	        	echo.setMessage('Fichier(s) de translation n\'existant pas dans les sources : ' + countInexistantFilesPathInSources);
 	        	echo.perform();
 	        	echo = project.createTask("echo");
 	        	echo.setMessage(concatInexistantFilesPathInSources);
@@ -379,7 +376,7 @@
         	}
         	if(countInexistantFilesPathInTranslations!=0){
 	        	echo = project.createTask("echo");
-	        	echo.setMessage('Fichier(s) des sources n\'existant pas dans la traduction : ' + countInexistantFilesPathInTranslations);
+	        	echo.setMessage('Fichier(s) des sources n\'existant pas dans la translation : ' + countInexistantFilesPathInTranslations);
 	        	echo.perform();
 	        	echo = project.createTask("echo");
 	        	echo.setMessage(concatInexistantFilesPathInTranslations);
@@ -415,7 +412,7 @@
 						<property file="${folder.sources}/OpenCms ${version}/src${fileEN}" prefix="en"/>
 						<property file="${folder.sources}/OpenCms ${version}/src-gwt${fileEN}" prefix="en"/>
 						<property file="${folder.sources}/OpenCms ${version}/src-modules${fileEN}" prefix="en"/>
-						<property file="${folder.traductions}/${version}${fileFR}" prefix="fr"/>
+						<property file="${folder.translations}/${version}${fileFR}" prefix="fr"/>
 						<!-- 
 						<echoproperties prefix="en."/>
 						<echoproperties prefix="fr."/>
@@ -441,7 +438,7 @@
 					        }
 					        
 					        echo = project.createTask("echo");
-					       	echo.setMessage("** " + ENproperties.length + " cle(s) dans les sources, " + FRproperties.length+ " cle(s) dans la traduction");
+					       	echo.setMessage("** " + ENproperties.length + " cle(s) dans les sources, " + FRproperties.length+ " cle(s) dans la translation");
 					       	echo.perform();
 					     		
 					        var concatInexistantKeyInSources = '';
@@ -466,7 +463,7 @@
 					       	}
 					       	if(countInexistantKeyInSources!=0){
 						       	echo = project.createTask("echo");
-						       	echo.setMessage('!! La(s) cle(s) suivantes de traduction n\'existe(nt) pas dans les sources : ' + countInexistantKeyInSources);
+						       	echo.setMessage('!! La(s) cle(s) suivantes de translation n\'existe(nt) pas dans les sources : ' + countInexistantKeyInSources);
 						       	echo.perform();
 						       	echo = project.createTask("echo");
 						       	echo.setMessage('!! ' + concatInexistantKeyInSources);
@@ -497,7 +494,7 @@
 					       	}
 					       	if(countInexistantKeyInTranslations!=0){
 						       	echo = project.createTask("echo");
-						       	echo.setMessage('!! La(s) cle(s) suivantes des sources n\'existe(nt) pas dans la traduction : ' + countInexistantKeyInTranslations);
+						       	echo.setMessage('!! La(s) cle(s) suivantes des sources n\'existe(nt) pas dans la translation : ' + countInexistantKeyInTranslations);
 						       	echo.perform();
 						       	echo = project.createTask("echo");
 						       	echo.setMessage('!! ' + concatInexistantKeyInTranslations);
@@ -544,16 +541,16 @@
 			<map from="${rootfolder.sources}/OpenCms ${version}/src-gwt" to=""/>
 			<map from="${rootfolder.sources}/OpenCms ${version}/src" to=""/>
 		</pathconvert>
-		<fileset id="FRtranslations" dir="${folder.traductions}/${version}${package}">
+		<fileset id="FRtranslations" dir="${folder.translations}/${version}${package}">
 			<filename name="**/*.properties"/>
 		</fileset>
 		<pathconvert targetos="unix" property="FRtranslations" refid="FRtranslations" pathsep=", ">
-			<map from="${rootfolder.project}/${folder.traductions}/${version}" to=""/>
+			<map from="${rootfolder.project}/${folder.translations}/${version}" to=""/>
 		</pathconvert>
 		<echo>Version OpenCms : ${version}</echo>
 		<echo>Package : ${package}</echo>
 		<echo>Dossiers relatifs Sources : ${folder.sources}/OpenCms ${version}/src${package}, ${folder.sources}/OpenCms ${version}/src-gwt${package}, ${folder.sources}/OpenCms ${version}/src-modules${package}</echo>
-		<echo>Dossier relatif Translations : "${folder.traductions}/${version}"</echo>
+		<echo>Dossier relatif Translations : "${folder.translations}/${version}"</echo>
 		
 		<script language="javascript"> <![CDATA[
 				var ENsources      	= project.getProperty("ENsources");
@@ -592,7 +589,7 @@
         	}
         	if(countInexistantFilesPathInSources!=0){
 	        	echo = project.createTask("echo");
-	        	echo.setMessage('Fichier(s) de traduction n\'existant pas dans les sources : ' + countInexistantFilesPathInSources);
+	        	echo.setMessage('Fichier(s) de translation n\'existant pas dans les sources : ' + countInexistantFilesPathInSources);
 	        	echo.perform();
 	        	echo = project.createTask("echo");
 	        	echo.setMessage(concatInexistantFilesPathInSources);

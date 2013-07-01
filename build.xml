@@ -5,16 +5,16 @@
 	<!-- important -->
 	<property name="project.name" value="OpenCms Localisation" />
 	<property name="module.module.name" value="com.eurelis.opencms.locale.fr" />
-	<property name="module.module.version" value="0.0.1" />
+	<property name="module.module.version" value="1.0.0" />
 	<property name="folder.package" value="com/eurelis/opencms/locale/fr" />
-	<property name="jar.version" value="0.0.1" />
+	<property name="jar.version" value="1.0.0" />
 	<property name="jdk.version" value="1.6" />
 	<!--<property name="jarexists" value="true" />-->
 	<property name="flag.uuids" value="true" />
 
 
 	<!-- module -->
-	<property name="module.info.opencmsversion" value="8.0.3" />
+	<property name="module.info.opencmsversion" value="8.5.1" />
 	<property name="module.info.exportversion" value="7" />
 	<property name="module.module.moduleclass" value="" />
 

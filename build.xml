@@ -83,6 +83,7 @@
 	<taskdef name="manifest" classname="com.eurelis.opencms.ant.task.ManifestBuilderTask">
 		<classpath>
 			<fileset dir="${folder.etc.complib}" includes="*.jar" />
+      <fileset dir="${folder.etc}/license" />
 		</classpath>
 	</taskdef>
 	<taskdef resource="net/sf/antcontrib/antcontrib.properties">

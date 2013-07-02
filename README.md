@@ -6,18 +6,18 @@ This module developed by [Eurelis][eurelis] is intended to translate the [OpenCm
 
 How to install it
 -----------------
-### Install the module like any other module in Administration view.
+Install the module like any other module in Administration view.
 ![install-01]
 
-### Restart the OpenCms instance
+Restart the OpenCms instance
 
 
 How to use it
 -------------
-### Set the language to "French" in the Preferences:
+Set the language to "French" in the Preferences:
 ![usage-01]
 
-### The workplace is now in French: et voil&#224;!
+The workplace is now in French: et voil&#224;!
 ![usage-02]
 
 
@@ -26,5 +26,5 @@ How to use it
 
 [install-01]: /etc/images/install-01.png "Installation"
 [usage-01]: /etc/images/usage-01.png "Preferences"
-[usage-02]: /etc/images/usage-02.png "Example os usage"
+[usage-02]: /etc/images/usage-02.png "Example of usage"
 

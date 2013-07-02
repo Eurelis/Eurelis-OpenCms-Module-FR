@@ -1,52 +1,23 @@
-<project name="com.eurelis.opencms.locale.fr" default="4 Compression zip" basedir=".">
-
-	<!-- // VARIABLES A MODIFIER // -->
-
-	<!-- important -->
-	<property name="project.name" value="OpenCms Localisation" />
-	<property name="module.module.name" value="com.eurelis.opencms.locale.fr" />
-	<property name="module.module.version" value="1.0.0" />
-	<property name="folder.package" value="com/eurelis/opencms/locale/fr" />
-	<property name="jar.version" value="1.0.0" />
-	<property name="jdk.version" value="1.6" />
-	<!--<property name="jarexists" value="true" />-->
-	<property name="flag.uuids" value="true" />
-
-
-	<!-- module -->
-	<property name="module.info.opencmsversion" value="8.5.1" />
-	<property name="module.info.exportversion" value="7" />
-	<property name="module.module.moduleclass" value="" />
-
-
-	<!-- // CONSTANTES // -->
-
-	<!-- ressources compilation -->
-	<property name="file.resourcetypes" value="etc/resourcetypes.xml" />
-	<property name="file.explorertypes" value="etc/explorertypes.xml" />
-	<property name="folder.archives.modules" value="modules" />
-	<property name="folder.dist" value="dist" />
-	<property name="folder.etc" value="etc" />
-	<property name="folder.distlib" value="etc/distlib" />
-	<property name="folder.complib" value="etc/complib" />
-	<property name="folder.bin" value="bin" />
-	<property name="folder.module" value="vfs_module" />
-	<property name="folder.src" value="src" />
-	<property name="folder.archives.jar" value="jar" />
-	<!-- module -->
-	<property name="module.info.creator" value="Admin" />
-	<property name="module.info.project" value="Offline" />
-	<property name="module.module.group" value="Eurelis products" />
-	<property name="module.module.authorname" value="Eurelis" />
-	<property name="module.module.authoremail" value="contact@eurelis.com" />
-	<property name="module.module.userinstalled" value="" />
-	<property name="module.module.dateinstalled" value="" />
-	<property name="modulepath.zip" value="${folder.archives.modules}/${module.module.name}_${module.module.version}.zip" />
-	<property name="modulename.zip" value="${module.module.name}_${module.module.version}.zip" />
-	<property name="module.module.nicename" value="Eurelis - ${project.name} features - Version ${module.module.version}" />
-	<property name="module.module.moduledescription" value="Eurelis OpenCms Module for ${project.name} features.
-                   ////
-		               Version for OpenCms 8.0.3
+<project name="com.eurelis.opencms.locale.fr" default="°°°° MODULE" basedir=".">
+	
+	<!-- HOW TO UPDATE THE TRANSLATION MODULE ? -->
+	<!-- 
+			Use the correct version : 
+				* Right Click on this Ant file
+				* Run as... > External tools configurations...
+				* Within "Arguments:", use "-Dversion=8.5.1" indicating the desired OpenCms version
+      Check the labels of the desired version according to the OpenCms cources :
+				* Double click on °°° COMPARE PACKAGE
+			Generate the module package (.zip) :
+				* Double click on °°° MODULE
+	 -->
+	 
+	<!-- Tree project sources -->
+	<property name="folder.sources" value="../../1 - OpenCms sources" />
+	<property name="rootfolder.project" value="C:/dev/projects/2 - Eurelis modules/com.eurelis.opencms.locale.fr" />
+	<property name="rootfolder.sources" value="C:/dev/projects/1 - OpenCms sources" />
+	
+	<property name="license" value="
 		               ////
 		               OpenCms - 	Eurelis - EUR-FRAMEWORK : Module Common Portlets
 		               Copyright (C) Eurelis - http://www.eurelis.com
@@ -62,130 +33,637 @@
 		               .
 		               You should have received a copy of the GNU Lesser General Public License
 		               along with this program.  If not, see http://www.gnu.org/licenses/." />
-	<!-- jar -->
-	<property name="folder.opencms.lib" value="${folder.module}/system/modules/${module.module.name}/lib" />
-	<property name="jar.name" value="${module.module.name}" />
-	<property name="jar.file" value="${jar.name}_${jar.version}.jar" />
-	<property name="classpath" value="${folder.bin}" />
+	
+	<!-- OpenCms version -->
+	<property name="defaultopencmsversion" value="8.5.1" />
+	
 
-	<!-- // TACHES ANT // -->
+	
+	<!-- Generique MODULE -->
+	<property name="project.name" value="OpenCms Localisation" />
+	<property name="module.creatoruser" value="Admin" />
+	<property name="module.project" value="Offline" />
+	<!-- <property name="module.versionopencms" value="${version}" /> -->
+	<property name="module.versionexport" value="7" />
+	<property name="module.versionmodule" value="0.0.1" />
+	<!-- <property name="module.name" value="com.eurelis.opencms.locale.fr-${version}" /> -->
+	<!-- <property name="module.nicename" value="Eurelis - ${project.name} features - Version ${module.versionmodule}" /> -->
+	<property name="module.group" value="OpenCms Localization" />
+	<property name="module.class" value="" />
+	<!-- <property name="module.description" value="Eurelis OpenCms Module for ${project.name} features.
+                   ////
+		               Version for OpenCms ${module.versionopencms}
+		               ${license}" /> -->
+	<property name="module.authorname" value="Eurelis" />
+	<property name="module.authoremail" value="contact@eurelis.com" />
+	<property name="module.userinstalled" value="" />
+	<property name="module.dateinstalled" value="" />
+	
+	<!-- Arbo projet Eclipse -->
+	<property name="file.resourcetypes" value="etc/resourcetypes.xml" />
+	<property name="file.explorertypes" value="etc/explorertypes.xml" />
+	<property name="folder.build" value="build" />
+	<property name="folder.build.classes" value="build/classes" />
+	<property name="folder.build.jar" value="build/jar" />
+	<property name="folder.build.dist" value="build/dist" />
+	<property name="folder.build.zip" value="build/zip" />
+	<property name="folder.moduleresources" value="vfs_module" />
+	<property name="folder.moduleresources.messages" value="vfs_module/system/workplace/locales/fr/messages" />
+	<property name="folder.etc" value="etc" />
+	<property name="folder.etc.complib" value="etc/complib" />
+	<property name="folder.etc.distlib" value="etc/distlib" />
+	<property name="folder.bin" value="bin" />
+	<property name="folder.src" value="src" />
+	<property name="folder.translations" value="translations" />
+	
+	
+	
+
 
 	<taskdef name="manifest" classname="com.eurelis.opencms.ant.task.ManifestBuilderTask">
 		<classpath>
-			<fileset dir="${folder.complib}" includes="*.jar" />
+			<fileset dir="${folder.etc.complib}" includes="*.jar" />
+		</classpath>
+	</taskdef>
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+		<classpath>
+			<pathelement location="${folder.etc.complib}/ant-contrib-1.0b3.jar" />
 		</classpath>
 	</taskdef>
 
-	<!-- CREATION DE L ARBORESCENCE DU PROJET -->
-	<target name="0 init arbo projet" description="Initialiser l'arborescence du projet">
-		<mkdir dir="${folder.archives.jar}" />
-		<mkdir dir="${folder.archives.modules}" />
-		<mkdir dir="${folder.dist}" />
+
+	<target name="Create project" description="Init project tree">
 		<mkdir dir="${folder.etc}" />
-		<mkdir dir="${folder.distlib}" />
-		<mkdir dir="${folder.complib}" />
+		<mkdir dir="${folder.etc.distlib}" />
+		<mkdir dir="${folder.etc.complib}" />
 		<mkdir dir="${folder.bin}" />
 		<mkdir dir="${folder.src}" />
-		<mkdir dir="${folder.module}" />
-		<mkdir dir="${folder.module}/system/modules/${module.module.name}/classes/${folder.package}" />
+		<mkdir dir="${folder.build}" />
+		<mkdir dir="${folder.build.classes}" />
+		<mkdir dir="${folder.build.jar}" />
+		<mkdir dir="${folder.build.dist}" />
+		<mkdir dir="${folder.build.zip}" />
+		<mkdir dir="${folder.moduleresources}" />
+		<mkdir dir="${folder.moduleresources.messages}" />
+		<mkdir dir="${folder.translations}" />
 	</target>
 
-	<!-- CREATION DE L ARBORESCENCE DES SOURCES -->
-	<target name="0 init arbo sources" description="Initialiser l'arborescence des sources">
-		<mkdir dir="${folder.src}/${folder.package}" />
-		<mkdir dir="${folder.module}/system/modules/${module.module.name}/lib" />
-	</target>
 
-	<!-- COMPILATION DES CLASSES -->
-	<path id="compil.classpath">
-		<fileset dir="${folder.complib}" includes="*.jar" />
-		<fileset dir="${folder.distlib}" includes="*.jar" />
-	</path>
-	<target name="1 Compilation du jar" description="Compilation des classes, creation du jar dans le repertoire d'archives.">
-		<javac srcdir="${folder.src}" destdir="${folder.bin}" classpathref="compil.classpath" debug="off" />
-		<jar jarfile="${folder.archives.jar}/${jar.file}" basedir="${folder.bin}" >
-        	<manifest>
-           		<attribute name="Built-By" value="${module.module.authorname}" />
-           		<attribute name="Build-Jdk" value="${jdk.version}" />
-        	</manifest>
-		</jar>
-	</target>
-
-	<!-- DISTRIBUTION DU MODULE -->
-	<target name="2 Distribution des ressources" description="Distribution des ressources uniquement." unless="jarexists">
-		<delete dir="${folder.dist}" />
-		<mkdir dir="${folder.dist}" />
-		<copy todir="${folder.dist}">
-			<fileset dir="${folder.module}" excludes="**/__properties,**/__properties/**" />
+	
+	<!-- ................................................................ -->
+	<!--  CREATION DU MODULE -->
+	
+	<target name="° Distribute resources" description="Distributing only resources">
+		<input message="Please enter OpenCms version (ex : 8.5.1):" addproperty="version" defaultvalue="${defaultopencmsversion}"/>
+		<condition property="version" value="${defaultopencmsversion}">
+      <not><isset property="version" /></not>
+    </condition>
+		<delete dir="${folder.build.dist}" />
+		<mkdir dir="${folder.build.dist}" />
+		<copy todir="${folder.build.dist}">
+			<fileset dir="${folder.moduleresources}" excludes="**/__properties,**/__properties/**" />
 		</copy>
-		<echo message="Ressources copiees" />
-	</target>
-	<target name="2 Distribution des ressources et du jar" description="Distribution des ressources et du jar." if="jarexists">
-		<delete dir="${folder.dist}" />
-		<mkdir dir="${folder.dist}" />
-		<copy todir="${folder.dist}">
-			<fileset dir="${folder.module}" excludes="**/__properties,**/__properties/**" />
+		<echo message="General resources copied" />
+		<copy todir="${folder.build.dist}/system/workplace/locales/fr/messages">
+			<fileset dir="${folder.translations}/${version}" excludes="**/__properties,**/__properties/**" />
 		</copy>
-		<echo message="Ressources copiees" />
-		<copy file="${folder.archives.jar}/${jar.file}" todir="${folder.dist}/system/modules/${module.module.name}/lib" />
-		<echo message="Jar custom copie" />
-		<copy todir="${folder.dist}/system/modules/${module.module.name}/lib">
-			<fileset dir="${folder.distlib}" />
-		</copy>
-		<echo message="Jars distlib copies" />
+		<echo message="Resources ${version} copied" />
 	</target>
-	<target name="2 Distribution" depends="2 Distribution des ressources,2 Distribution des ressources et du jar">
-
-	</target>
-
+	
+	
 	<!-- CONSTRUCTION DU MANIFEST -->
-	<target name="3 Creation Manifest" depends="2 Distribution">
-		<manifest generateuuids="${flag.uuids}"
-                       distfolder="${folder.dist}"
-                       srcfolder="${folder.module}"
+	<target name="°° Create manifest" depends="° Distribute resources">
+		<input message="Please enter OpenCms version (ex : 8.5.1):" addproperty="version" defaultvalue="${defaultopencmsversion}"/>
+		<condition property="version" value="${defaultopencmsversion}">
+      <not><isset property="version" /></not>
+    </condition>
+		<property name="module.versionopencms" value="${version}" />
+		<property name="module.name" value="com.eurelis.opencms.locale.fr-${version}" />
+		<property name="module.nicename" value="Eurelis - ${project.name} features - Version ${module.versionmodule}" />
+		<property name="module.description" value="Eurelis OpenCms Module for ${project.name} features.
+                   ////
+		               Version for OpenCms ${module.versionopencms}
+		               ${license}" />
+		<manifest generateuuids="true"
+                       distfolder="${folder.build.dist}"
+                       srcfolder="${folder.moduleresources}"
                        resourcetypes="${file.resourcetypes}"
                        explorertypes="${file.explorertypes}"
-                       creator="${module.info.creator}"
-                       opencmsversion="${module.info.opencmsversion}"
-                       project="${module.info.project}"
-                       exportversion="${module.info.exportversion}"
-                       name="${module.module.name}"
-                       nicename="${module.module.nicename}"
-                       group="${module.module.group}"
-                       moduleclass="${module.module.moduleclass}"
-                       moduledescription="${module.module.moduledescription}"
-                       version="${module.module.version}"
-                       authorname="${module.module.authorname}"
-                       authoremail="${module.module.authoremail}"
-                       userinstalled="${module.module.userinstalled}"
-                       dateinstalled="${module.module.dateinstalled}">
-                       <!--Les POINTS D'EXPORTS-->
+                       creator="${module.creatoruser}"
+                       opencmsversion="${module.versionopencms}"
+                       project="${module.project}"
+                       exportversion="${module.versionexport}"
+                       name="${module.name}"
+                       nicename="${module.nicename}"
+                       group="${module.group}"
+                       moduleclass="${module.class}"
+                       moduledescription="${module.description}"
+                       version="${module.versionmodule}"
+                       authorname="${module.authorname}"
+                       authoremail="${module.authoremail}"
+                       userinstalled="${module.userinstalled}"
+                       dateinstalled="${module.dateinstalled}">
                        <exportpoint src="/system/workplace/locales/fr/messages/" dst="WEB-INF/classes/" />
-                       <!--Les RESSOURCES DE MODULE-->
 		                   <resource uri="/system/workplace/locales/fr/messages/org/opencms/" />
 			                 <resource uri="/system/workplace/locales/fr/help/" />
-               		     <!--Les PARAMETRES-->
+               		     <!--PARAMETERS -->
                        <!--<parameter name="config.sitemap" value="/system/modules/${module.module.name}/config/sitemap.config" />
 					             <parameter name="config.containerpage" value="/system/modules/${module.module.name}/config/sitemap.config" />-->
-                       <!--Les DEPENDANCES (vis a vis d'autres modules)-->
+                       <!--DEPENDANCIES (with other modules)-->
                        <!--<dependency name="com.alkacon.opencms.weboptimization" version="1.0.0" />-->
-               		     <!--Un dernier type : le pack de fichiers traites par le module-->
-                       <fileset dir="${folder.dist}" excludes="**/__properties,**/__properties/**" />
+                       <fileset dir="${folder.build.dist}" excludes="**/__properties,**/__properties/**" />
 		</manifest>
+		<echo message="Manifest created" />
 	</target>
-
-	<!-- COMPRESSION ZIP -->
-	<target name="4 Compression zip" depends="3 Creation Manifest">
-		<zip destfile="${modulepath.zip}">
-			<zipfileset dir="${folder.dist}" excludes="**/__properties/**" />
+	
+	<target name="°°° Compress zip" depends="°° Create manifest">
+		<input message="Please enter OpenCms version (ex : 8.5.1):" addproperty="version" defaultvalue="${defaultopencmsversion}"/>
+		<condition property="version" value="${defaultopencmsversion}">
+      <not><isset property="version" /></not>
+    </condition>
+    <property name="module.versionopencms" value="${version}" />
+    <property name="module.name" value="com.eurelis.opencms.locale.fr-${version}" />
+    <property name="module.nicename" value="Eurelis - ${project.name} features - Version ${module.versionmodule}" />
+		<property name="module.description" value="Eurelis OpenCms Module for ${project.name} features.
+                   ////
+		               Version for OpenCms ${module.versionopencms}
+		               ${license}" />
+		<zip destfile="${folder.build.zip}/${module.name}.zip">
+			<zipfileset dir="${folder.build.dist}" excludes="**/__properties/**" />
 		</zip>
-	 </target>
-
-
-
-	<!-- HISTORIQUE -->
-	<target name="readme : history">
-		<echo message="******HISTORY******" />
+		<echo message="Zip created" />
+	</target>
+	
+	<target name="°°°° MODULE">
+		<input message="Please enter OpenCms version (ex : 8.5.1):" addproperty="version" defaultvalue="${defaultopencmsversion}"/>
+		<condition property="version" value="${defaultopencmsversion}">
+      <not><isset property="version" /></not>
+    </condition>
+ 		<echo>OpenCms Version : ${version}</echo>
+ 		<antcall target="°°° Compress zip"></antcall>
+	</target>
+	
+	
+	
+	
+	
+	
+	<!-- ................................................................ -->
+	<!-- COMPARAISON DES LIBELLES -->
+	
+	<target name="+ Get sources filepaths">
+		<input message="Please enter OpenCms version (ex : 8.5.1):" addproperty="version" defaultvalue="${defaultopencmsversion}"/>
+		<condition property="version" value="${defaultopencmsversion}">
+      <not><isset property="version" /></not>
+    </condition>
+		<input message="Please enter package path with ending slash (ex : /org/opencms/workplace/):" addproperty="package" defaultvalue="/"/>
+		<condition property="package" value="/">
+      <not><isset property="package" /></not>
+    </condition>
+    
+		<fileset id="ENsources" dir="${folder.sources}/OpenCms ${version}/" includes="src${package},src-gwt${package},src-modules${package}">
+			<filename name="**/*.properties"/>
+			<not><filename name="**/*query.properties"/></not>
+		  <not><filename name="**/*gwt.properties"/></not>
+		</fileset>
+		<pathconvert targetos="unix" property="ENsources" refid="ENsources" pathsep=", ">
+			<map from="${rootfolder.sources}/OpenCms ${version}/src-modules" to=""/>
+			<map from="${rootfolder.sources}/OpenCms ${version}/src-gwt" to=""/>
+			<map from="${rootfolder.sources}/OpenCms ${version}/src" to=""/>
+		</pathconvert>
+		<echo>Version OpenCms : ${version}</echo>
+		<echo>Package : ${package}</echo>
+		<echo>Dossiers relatifs Sources : ${folder.sources}/OpenCms ${version}/src${package}, ${folder.sources}/OpenCms ${version}/src-gwt${package}, ${folder.sources}/OpenCms ${version}/src-modules${package}</echo>
+		<script language="javascript"> <![CDATA[
+				var ENsources      = project.getProperty("ENsources");
+        var sourcesFilesPaths = ENsources.split(', ');
+       	echo = project.createTask("echo");
+       	echo.setMessage('Sources : ' + sourcesFilesPaths.length + ' fichier(s) .properties');
+       	echo.perform();
+       	echo = project.createTask("echo");
+       	echo.setMessage(ENsources);
+       	echo.perform();
+    ]]></script>
+	</target>
+	
+	<target name="+ Get translations filepaths">
+		<input message="Please enter OpenCms version (ex : 8.5.1):" addproperty="version" defaultvalue="${defaultopencmsversion}"/>
+		<condition property="version" value="${defaultopencmsversion}">
+      <not><isset property="version" /></not>
+    </condition>
+    <input message="Please enter package path with ending slash (ex : /org/opencms/workplace/):" addproperty="package" defaultvalue="/"/>
+		<condition property="package" value="/">
+      <not><isset property="package" /></not>
+    </condition>
+    
+		<fileset id="FRtranslations" dir="${folder.translations}/${version}${package}">
+			<filename name="**/*.properties"/>
+		</fileset>
+		<pathconvert targetos="unix" property="FRtranslations" refid="FRtranslations" pathsep=", ">
+			<map from="${rootfolder.project}/${folder.translations}/${version}" to=""/>
+		</pathconvert>
+		<echo>OpenCms Version : ${version}</echo>
+		<echo>Package : ${package}</echo>
+		<echo>Translations Relative Folder : "${folder.translations}/${version}${package}"</echo>
+		<script language="javascript"> <![CDATA[
+				var FRtranslations      = project.getProperty("FRtranslations");
+        var translationsFilesPaths = FRtranslations.split(', ');
+       	echo = project.createTask("echo");
+       	echo.setMessage('Translations : ' + translationsFilesPaths.length + ' .properties file(s)');
+       	echo.perform();
+       	echo = project.createTask("echo");
+       	echo.setMessage(FRtranslations);
+       	echo.perform();
+     ]]></script>
+	</target>
+	
+	
+	<target name=". Compare sources filepaths vs translations filepaths">
+		<input message="Please enter OpenCms version (ex : 8.5.1):" addproperty="version" defaultvalue="${defaultopencmsversion}"/>
+		<condition property="version" value="${defaultopencmsversion}">
+      <not><isset property="version" /></not>
+    </condition>
+    <input message="Please enter package path with ending slash (ex : /org/opencms/workplace/):" addproperty="package" defaultvalue="/"/>
+		<condition property="package" value="/">
+      <not><isset property="package" /></not>
+    </condition>
+    
+		<fileset id="ENsources" dir="${folder.sources}/OpenCms ${version}/" includes="src${package},src-gwt${package},src-modules${package}">
+			<filename name="**/*.properties"/>
+			<not><filename name="**/*query.properties"/></not>
+		  <not><filename name="**/*gwt.properties"/></not>
+		</fileset>
+		<pathconvert targetos="unix" property="ENsources" refid="ENsources" pathsep=", ">
+			<map from="${rootfolder.sources}/OpenCms ${version}/src-modules" to=""/>
+			<map from="${rootfolder.sources}/OpenCms ${version}/src-gwt" to=""/>
+			<map from="${rootfolder.sources}/OpenCms ${version}/src" to=""/>
+		</pathconvert>
+		<fileset id="FRtranslations" dir="${folder.translations}/${version}${package}">
+			<filename name="**/*.properties"/>
+		</fileset>
+		<pathconvert targetos="unix" property="FRtranslations" refid="FRtranslations" pathsep=", ">
+			<map from="${rootfolder.project}/${folder.translations}/${version}" to=""/>
+		</pathconvert>
+		<echo>Version OpenCms : ${version}</echo>
+		<echo>Package : ${package}</echo>
+		<echo>Dossiers relatifs Sources : ${folder.sources}/OpenCms ${version}/src${package}, ${folder.sources}/OpenCms ${version}/src-gwt${package}, ${folder.sources}/OpenCms ${version}/src-modules${package}</echo>
+		<echo>Dossier relatif Translations : "${folder.translations}/${version}"</echo>
+		
+		<script language="javascript"> <![CDATA[
+				var ENsources      = project.getProperty("ENsources");
+				var ENsourcesInFR = ENsources.replace('messages.properties','messages_fr.properties').replace('page.properties','page_fr.properties');
+				var FRtranslations      = project.getProperty("FRtranslations");
+        
+        if(ENsourcesInFR!=FRtranslations){
+        	
+        	var sourcesFilesPaths = ENsourcesInFR.split(', ');
+        	var translationsFilesPaths = FRtranslations.split(', ');
+        	
+        	echo = project.createTask("echo");
+        	echo.setMessage('Sources : ' + sourcesFilesPaths.length + ' fichier(s) .properties - Translations : ' + translationsFilesPaths.length + ' fichier(s) .properties');
+        	echo.perform();
+        	
+        	
+        	var concatInexistantFilesPathInSources = '';
+        	var countInexistantFilesPathInSources = 0;
+        	for(i = 0; i<translationsFilesPaths.length; i++){
+        		var translatedPath = translationsFilesPaths[i];
+        		var found = false;
+        		for(j = 0; j<sourcesFilesPaths.length; j++){
+        			var sourcePath = sourcesFilesPaths[j];
+        			if(sourcePath.equals(translatedPath)){
+        				found = true;
+        			}
+        		}
+        		if(!found){
+        			if(concatInexistantFilesPathInSources==''){
+        				concatInexistantFilesPathInSources = translatedPath;
+        			}else{
+        				concatInexistantFilesPathInSources = concatInexistantFilesPathInSources + ', ' + translatedPath;
+        			}
+        			countInexistantFilesPathInSources++;
+        		}
+        	}
+        	if(countInexistantFilesPathInSources!=0){
+	        	echo = project.createTask("echo");
+	        	echo.setMessage('Fichier(s) de translation n\'existant pas dans les sources : ' + countInexistantFilesPathInSources);
+	        	echo.perform();
+	        	echo = project.createTask("echo");
+	        	echo.setMessage(concatInexistantFilesPathInSources);
+	        	echo.perform();
+        	}
+        	
+        	
+        	var concatInexistantFilesPathInTranslations = '';
+        	var countInexistantFilesPathInTranslations = 0;
+        	for(i = 0; i<sourcesFilesPaths.length; i++){
+        		var sourcePath = sourcesFilesPaths[i];
+        		var found = false;
+        		for(j = 0; j<translationsFilesPaths.length; j++){
+        			var translatedPath = translationsFilesPaths[j];
+        			if(sourcePath.equals(translatedPath)){
+        				found = true;
+        			}
+        		}
+        		if(!found){
+        			if(concatInexistantFilesPathInTranslations==''){
+        				concatInexistantFilesPathInTranslations = sourcePath;
+        			}else{
+        				concatInexistantFilesPathInTranslations = concatInexistantFilesPathInTranslations + ', ' + sourcePath;
+        			}
+        			countInexistantFilesPathInTranslations++;
+        		}
+        	}
+        	if(countInexistantFilesPathInTranslations!=0){
+	        	echo = project.createTask("echo");
+	        	echo.setMessage('Fichier(s) des sources n\'existant pas dans la translation : ' + countInexistantFilesPathInTranslations);
+	        	echo.perform();
+	        	echo = project.createTask("echo");
+	        	echo.setMessage(concatInexistantFilesPathInTranslations);
+	        	echo.perform();
+        	}
+        	
+        	
+        }else{
+        	echo = project.createTask("echo");
+        	echo.setMessage('OK les fichiers matchent.');
+        	echo.perform();
+        }
+        
+        
+		]]></script>
+	</target>
+	
+	
+	<macrodef name="scanfile">
+    <attribute name="file" default=""/>
+    <sequential>
+    	<if>
+				<equals arg1="@{file}" arg2="" />
+				<then>
+				   	<echo>File path empty</echo>
+				</then>
+				<else>
+						<echo>File : @{file}</echo>
+						<var name="fileEN" value="@{file}.properties" />
+						<var name="fileFR" value="@{file}_fr.properties" />
+						<echo>** File FR : ${fileFR} - File EN : ${fileEN}</echo>
+						<!-- trouver comment reset ces proprietes -->
+						<property file="${folder.sources}/OpenCms ${version}/src${fileEN}" prefix="en"/>
+						<property file="${folder.sources}/OpenCms ${version}/src-gwt${fileEN}" prefix="en"/>
+						<property file="${folder.sources}/OpenCms ${version}/src-modules${fileEN}" prefix="en"/>
+						<property file="${folder.translations}/${version}${fileFR}" prefix="fr"/>
+						<!-- 
+						<echoproperties prefix="en."/>
+						<echoproperties prefix="fr."/>
+					  -->
+						<script language="javascript"> <![CDATA[
+									var ENfilepath      = project.getProperty("fileEN");
+									var FRfilepath      = project.getProperty("fileFR");
+									var ENproperties      = new Array(0);
+									var FRproperties    	= new Array(0);
+									var matchingProperties    	= new Array(0);
+							
+									var properties = project.getProperties(); 
+					        var keys = properties.keySet();
+					        var it = keys.iterator();
+					        while(it.hasNext()){
+					        	var key = it.next();
+					        	if(key.startsWith("en.")){
+											ENproperties.push(key.substr(2,key.length));
+					        	}
+					        	if(key.startsWith("fr.")){
+					        		FRproperties.push(key.substr(2,key.length));
+					        	}
+					        }
+					        
+					        echo = project.createTask("echo");
+					       	echo.setMessage("** " + ENproperties.length + " cle(s) dans les sources, " + FRproperties.length+ " cle(s) dans la translation");
+					       	echo.perform();
+					     		
+					        var concatInexistantKeyInSources = '';
+					        var countInexistantKeyInSources = 0;
+					       	for(i = 0; i<FRproperties.length; i++){
+					       		var FRkey = FRproperties[i];
+					       		var found = false;
+					       		for(j = 0; j<ENproperties.length; j++){
+					       			var ENkey = ENproperties[j];
+					       			if(ENkey.equals(FRkey)){
+					       				found = true;
+					       			}
+					       		}
+					       		if(!found){
+					       			if(concatInexistantKeyInSources==''){
+					       				concatInexistantKeyInSources = FRkey;
+					       			}else{
+					       				concatInexistantKeyInSources = concatInexistantKeyInSources + ', ' + FRkey;
+					       			}
+					       			countInexistantKeyInSources++;
+					       		}
+					       	}
+					       	if(countInexistantKeyInSources!=0){
+						       	echo = project.createTask("echo");
+						       	echo.setMessage('!! La(s) cle(s) suivantes de translation n\'existe(nt) pas dans les sources : ' + countInexistantKeyInSources);
+						       	echo.perform();
+						       	echo = project.createTask("echo");
+						       	echo.setMessage('!! ' + concatInexistantKeyInSources);
+						       	echo.perform();
+					       	}
+					       	
+					       	var concatInexistantKeyInTranslations = '';
+					       	var countInexistantKeyInTranslations = 0;
+					       	for(i = 0; i<ENproperties.length; i++){
+					       		var ENkey = ENproperties[i];
+					       		var found = false;
+					       		for(j = 0; j<FRproperties.length; j++){
+					       			var FRkey = FRproperties[j];
+					       			if(ENkey.equals(FRkey)){
+					       				found = true;
+					       			}
+					       		}
+					       		if(!found){
+					       			if(concatInexistantKeyInTranslations==''){
+					       				concatInexistantKeyInTranslations = ENkey;
+					       			}else{
+					       				concatInexistantKeyInTranslations = concatInexistantKeyInTranslations + ', ' + ENkey;
+					       			}
+					       			countInexistantKeyInTranslations++;
+					       		}else{
+					       			matchingProperties.push(ENkey);
+					       		}
+					       	}
+					       	if(countInexistantKeyInTranslations!=0){
+						       	echo = project.createTask("echo");
+						       	echo.setMessage('!! La(s) cle(s) suivantes des sources n\'existe(nt) pas dans la translation : ' + countInexistantKeyInTranslations);
+						       	echo.perform();
+						       	echo = project.createTask("echo");
+						       	echo.setMessage('!! ' + concatInexistantKeyInTranslations);
+						       	echo.perform();
+					       	}
+					        
+							]]></script>
+				</else>
+			</if>
+    </sequential>
+  </macrodef>
+	
+	<target name=".. COMPARE FILE">
+		<input message="Please enter OpenCms version (ex : 8.5.1):" addproperty="version" defaultvalue="${defaultopencmsversion}"/>
+		<condition property="version" value="${defaultopencmsversion}">
+      <not><isset property="version" /></not>
+    </condition>
+		
+		<input message="Please enter file path (ex : /org/opencms/workplace/messages):" addproperty="filetoscan" defaultvalue=""/>
+		<condition property="filetoscan" value="">
+      <not><isset property="filetoscan" /></not>
+    </condition>
+		
+		<scanfile file="${filetoscan}" />
+	</target>
+	
+	<target name=".. COMPARE PACKAGE">
+		<input message="Please enter OpenCms version (ex : 8.5.1):" addproperty="version" defaultvalue="${defaultopencmsversion}"/>
+		<condition property="version" value="${defaultopencmsversion}">
+      <not><isset property="version" /></not>
+    </condition>
+    <input message="Please enter package path with ending slash (ex : /org/opencms/workplace/):" addproperty="package" defaultvalue="/org/opencms/"/>
+		<condition property="package" value="/">
+      <not><isset property="package" /></not>
+    </condition>
+    
+		<fileset id="ENsources" dir="${folder.sources}/OpenCms ${version}/" includes="src${package},src-gwt${package},src-modules${package}">
+			<filename name="**/*.properties"/>
+			<not><filename name="**/*query.properties"/></not>
+		  <not><filename name="**/*gwt.properties"/></not>
+		</fileset>
+		<pathconvert targetos="unix" property="ENsources" refid="ENsources" pathsep=", ">
+			<map from="${rootfolder.sources}/OpenCms ${version}/src-modules" to=""/>
+			<map from="${rootfolder.sources}/OpenCms ${version}/src-gwt" to=""/>
+			<map from="${rootfolder.sources}/OpenCms ${version}/src" to=""/>
+		</pathconvert>
+		<fileset id="FRtranslations" dir="${folder.translations}/${version}${package}">
+			<filename name="**/*.properties"/>
+		</fileset>
+		<pathconvert targetos="unix" property="FRtranslations" refid="FRtranslations" pathsep=", ">
+			<map from="${rootfolder.project}/${folder.translations}/${version}" to=""/>
+		</pathconvert>
+		<echo>Version OpenCms : ${version}</echo>
+		<echo>Package : ${package}</echo>
+		<echo>Dossiers relatifs Sources : ${folder.sources}/OpenCms ${version}/src${package}, ${folder.sources}/OpenCms ${version}/src-gwt${package}, ${folder.sources}/OpenCms ${version}/src-modules${package}</echo>
+		<echo>Dossier relatif Translations : "${folder.translations}/${version}"</echo>
+		
+		<script language="javascript"> <![CDATA[
+				var ENsources      	= project.getProperty("ENsources");
+				var ENsourcesInFR 	= ENsources.replace('messages.properties','messages_fr.properties').replace('page.properties','page_fr.properties');
+				var FRtranslations      = project.getProperty("FRtranslations");
+				var filePathsExisting 	= new Array(0);
+        
+        if(ENsourcesInFR!=FRtranslations){
+        	var sourcesFilesPaths = ENsourcesInFR.split(', ');
+        	var translationsFilesPaths = FRtranslations.split(', ');
+        	
+        	echo = project.createTask("echo");
+        	echo.setMessage('Sources : ' + sourcesFilesPaths.length + ' fichier(s) .properties - Translations : ' + translationsFilesPaths.length + ' fichier(s) .properties');
+      			echo.perform();
+        	
+        	
+        	var concatInexistantFilesPathInSources = '';
+        	var countInexistantFilesPathInSources = 0;
+        	for(i = 0; i<translationsFilesPaths.length; i++){
+        		var translatedPath = translationsFilesPaths[i];
+        		var found = false;
+        		for(j = 0; j<sourcesFilesPaths.length; j++){
+        			var sourcePath = sourcesFilesPaths[j];
+        			if(sourcePath.equals(translatedPath)){
+        				found = true;
+        			}
+        		}
+        		if(!found){
+        			if(concatInexistantFilesPathInSources==''){
+        				concatInexistantFilesPathInSources = translatedPath;
+        			}else{
+        				concatInexistantFilesPathInSources = concatInexistantFilesPathInSources + ', ' + translatedPath;
+        			}
+        			countInexistantFilesPathInSources++;
+        		}
+        	}
+        	if(countInexistantFilesPathInSources!=0){
+	        	echo = project.createTask("echo");
+	        	echo.setMessage('Fichier(s) de translation n\'existant pas dans les sources : ' + countInexistantFilesPathInSources);
+	        	echo.perform();
+	        	echo = project.createTask("echo");
+	        	echo.setMessage(concatInexistantFilesPathInSources);
+	        	echo.perform();
+        	}
+        	
+        	
+        	var concatInexistantFilesPathInTranslations = '';
+        	var countInexistantFilesPathInTranslations = 0;
+        	for(i = 0; i<sourcesFilesPaths.length; i++){
+        		var sourcePath = sourcesFilesPaths[i];
+        		var found = false;
+        		for(j = 0; j<translationsFilesPaths.length; j++){
+        			var translatedPath = translationsFilesPaths[j];
+        			if(sourcePath.equals(translatedPath)){
+        				found = true;
+        			}
+        		}
+        		if(!found){
+        			if(concatInexistantFilesPathInTranslations==''){
+        				concatInexistantFilesPathInTranslations = sourcePath;
+        			}else{
+        				concatInexistantFilesPathInTranslations = concatInexistantFilesPathInTranslations + ', ' + sourcePath;
+        			}
+        			countInexistantFilesPathInTranslations++;
+        		}else{
+        			filePathsExisting.push(sourcePath);
+        		}
+        	}
+        	if(countInexistantFilesPathInTranslations!=0){
+	        	echo = project.createTask("echo");
+	        	echo.setMessage('Fichier(s) des sources n\'existant pas dans la traduction : ' + countInexistantFilesPathInTranslations);
+	        	echo.perform();
+	        	echo = project.createTask("echo");
+	        	echo.setMessage(concatInexistantFilesPathInTranslations);
+	        	echo.perform();
+        	}
+        	
+        }else{
+        	echo = project.createTask("echo");
+        	echo.setMessage('OK les fichiers matchent.');
+        	echo.perform();
+        	
+        	for(i = 0; i<sourcesFilesPaths.length; i++){
+        		var sourcePath = sourcesFilesPaths[i];
+        		filePathsExisting.push(sourcePath);
+        	}
+        }
+       	
+       	if(filePathsExisting.length>25){
+       		echo = project.createTask("echo");
+        	echo.setMessage('+ de 25 fichiers .properties à scanner dans les sources... Affinez le package!');
+        	echo.perform();
+       	}else{
+       		for(i = 0; i<filePathsExisting.length; i++){
+	       		var filePath = filePathsExisting[i];
+						var filePath = filePath.replace("_fr.properties","");
+			
+						/*echo = project.createTask("echo");
+			      echo.setMessage('Scan files ' + filePath);
+			      echo.perform();*/
+			
+						echo = project.createTask("scanfile");
+						echo.getRuntimeConfigurableWrapper().setAttribute('file', filePath);
+						echo.perform();
+			
+	       	}
+       	}
+       	
+       	
+        
+        
+		]]></script>
+    		
 	</target>
 
 </project>

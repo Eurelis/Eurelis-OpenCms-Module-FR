@@ -139,7 +139,7 @@
       <not><isset property="version" /></not>
     </condition>
 		<property name="module.versionopencms" value="${version}" />
-		<property name="module.name" value="com.eurelis.opencms.locale.fr-${version}" />
+		<property name="module.name" value="com.eurelis.opencms.locale.fr_${version}" />
 		<property name="module.nicename" value="Eurelis - ${project.name} features - Version ${module.versionmodule}" />
 		<property name="module.description" value="Eurelis OpenCms Module for ${project.name} features.
                    ////

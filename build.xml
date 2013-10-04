@@ -13,9 +13,9 @@
 	 -->
 	 
 	<!-- Tree project sources -->
-	<property name="folder.sources" value="../../1 - OpenCms sources" />
-	<property name="rootfolder.project" value="C:/dev/projects/2 - Eurelis modules/com.eurelis.opencms.locale.fr" />
-	<property name="rootfolder.sources" value="C:/dev/projects/1 - OpenCms sources" />
+	<property name="folder.sources" value="../../sources-opencms" />
+	<property name="rootfolder.project" value="C:\dev\Sur Git (all)\Eurelis-OpenCms-Module-FR" />
+	<property name="rootfolder.sources" value="C:\dev\sources-opencms" />
 	
 	<property name="license" value="
 		               ////
@@ -35,7 +35,7 @@
 		               along with this program.  If not, see http://www.gnu.org/licenses/." />
 	
 	<!-- OpenCms version -->
-	<property name="defaultopencmsversion" value="8.5.1" />
+	<property name="defaultopencmsversion" value="8.9.0" />
 	
 
 	
